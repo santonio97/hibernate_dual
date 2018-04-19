@@ -1,6 +1,7 @@
 package es.fpdual.hibernate.hibernate_dual;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.*;
 
@@ -26,6 +27,12 @@ public class Persona extends Usuario {
 
 	@Column(name = "PER_DIR", nullable = false)
 	private List<Persona> direccion;
+	
+	@ManyToMany(cascade = CascadeType.ALL)
+	private List<Direccion> direcciones;
+	
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "persona")
+	private Set<Telefonos> telefonos;
 
 	//constructor vacio
 	public Persona() {

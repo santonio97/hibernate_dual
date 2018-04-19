@@ -39,7 +39,7 @@ public class Direccion implements Serializable {
 	private String puerta;
 
 	@Column(name = "DIR_PER", nullable = false)
-	private List<Persona> personas;
+	private List<Direccion> persona;
 
 	@Column(name = "DIR_DIR", nullable = false)
 	private String direccion;
@@ -130,12 +130,12 @@ public class Direccion implements Serializable {
 		this.direccion = direccion;
 	}
 
-	public List<Persona> getPersonas() {
-		return personas;
+	public List<Direccion> getPersonas() {
+		return persona;
 	}
 
-	public void setPersonas(List<Persona> personas) {
-		this.personas = personas;
+	public void setPersonas(List<Direccion> personas) {
+		this.persona = persona;
 	}
 
 	// FIN DE GETTERS Y SETTERS

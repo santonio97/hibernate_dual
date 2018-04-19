@@ -9,15 +9,19 @@ import es.fpdual.hibernate.hibernate_dual.Direccion;
 import es.fpdual.hibernate.hibernate_dual.EstadoCivil;
 import es.fpdual.hibernate.hibernate_dual.Persona;
 import es.fpdual.hibernate.hibernate_dual.Vehiculo;
+import es.fpdual.hibernate.hibernate_dual.repositorio.RepositorioCliente;
 import es.fpdual.hibernate.hibernate_dual.repositorio.RepositorioPersona;
 import es.fpdual.hibernate.hibernate_dual.repositorio.RepositorioVehiculo;
 
 public class PruebasPersona {
 
 	public static void main(String[] args) {
-		final Integer idPersona = crearPersona("68541894Z","jose");
-		modificarPersona(idPersona);
+//		final Integer idPersona = crearPersona("68541894Z", "jose");
+//		modificarDireccion(idPersona);
 		
+	}
+	
+	private static Integer crearDetalles() {
 		
 	}
 
@@ -31,14 +35,14 @@ public class PruebasPersona {
 		persona.setFechaAlta(new Date());
 		persona.setLogin(login);
 		persona.setPassword("jose");
-		
+
 		final Direccion direccion1 = new Direccion();
 		direccion1.setProvincia("Sevilla");
 		direccion1.setCiudad("Ecija");
 		direccion1.setCodPostal("41400");
 		direccion1.setDireccion("c/barcelona");
 		direccion1.setNumero(1);
-		direccion1.setPersonas(Arrays.asList(persona));
+		//direccion1.setPersonas(Arrays.asList(persona));
 
 		final Direccion direccion2 = new Direccion();
 		direccion2.setProvincia("Sevilla");
@@ -46,16 +50,24 @@ public class PruebasPersona {
 		direccion2.setCodPostal("41401");
 		direccion2.setDireccion("c/barcelona");
 		direccion2.setNumero(1);
-		direccion2.setPersonas(Arrays.asList(persona));
-		
+		//direccion2.setPersonas(Arrays.asList(persona));
+
 		persona.setDirecciones(null);
 		return RepositorioPersona.crearPersona(persona);
 	}
-	
-	private static void modificarDireccion(Integer idPersona) {
-		
+
+	private static void modificarDireccion(Integer idDireccion) {
+		final Direccion direccion = new Direccion();
+		direccion.setProvincia("Sevilla");
+		direccion.setCiudad("Ecija");
+		direccion.setCodPostal("41402");
+		direccion.setDireccion("c/barcelona");
+		direccion.setNumero(1);
+		direccion.setPersonas(Arrays.asList());
+
+		RepositorioPersona.modificarPersona(null);
 	}
-	
+
 	private static void modificarPersona(Integer idPersona) {
 
 		final Persona persona = new Persona();
@@ -64,9 +76,13 @@ public class PruebasPersona {
 		persona.setEdad(20);
 		persona.setEstadoCivil(EstadoCivil.CON_NOVIA);
 		persona.setDni("31021471X");
-		//persona.setIdPersona(2);
+		// persona.setIdPersona(2);
 
 		RepositorioPersona.modificarPersona(persona);
+	}
+	
+	private static void eliminarCliente(final Integer idCliente) {
+		RepositorioCliente.eliminarCliente(idCliente);
 	}
 
 	private static void eliminarPersona(final Integer idPersona) {
@@ -89,7 +105,7 @@ public class PruebasPersona {
 	private static void eliminarVehiculo(Integer idVehiculo) {
 		RepositorioVehiculo.eliminarVehiculo(idVehiculo);
 	}
-	
+
 	private static void consultarPersona(final Integer idPersona) {
 		final Persona persona = RepositorioPersona.consultarNombreCompleto(idPersona);
 		System.out.println(persona.getNombre());

@@ -22,6 +22,7 @@
 		<mapping class="es.fpdual.hibernate.hibernate_dual.Usuario" />
 		<mapping class="es.fpdual.hibernate.hibernate_dual.Cliente" />
 		<mapping class="es.fpdual.hibernate.hibernate_dual.Direccion" />
+		<mapping class="es.fpdual.hibernate.hibernate_dual.DetallesPersona" />
 		
     </session-factory>
 </hibernate-configuration>
