@@ -1,5 +1,7 @@
 package es.fpdual.hibernate.hibernate_dual;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -21,6 +23,9 @@ public class Persona extends Usuario {
 	@Column(name = "PER_ECV", nullable = false)
 	@Enumerated
 	private EstadoCivil estadoCivil;
+
+	@Column(name = "PER_DIR", nullable = false)
+	private List<Persona> direccion;
 
 	//constructor vacio
 	public Persona() {
@@ -65,6 +70,14 @@ public class Persona extends Usuario {
 
 	public void setEstadoCivil(EstadoCivil estadoCivil) {
 		this.estadoCivil = estadoCivil;
+	}
+
+	public List<Persona> getDirecciones() {
+		return direccion;
+	}
+
+	public void setDirecciones(List<Persona> direccion) {
+		this.direccion = direccion;
 	}
 	
 }

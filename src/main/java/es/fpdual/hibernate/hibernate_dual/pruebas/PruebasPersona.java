@@ -1,9 +1,11 @@
 package es.fpdual.hibernate.hibernate_dual.pruebas;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
 import es.fpdual.hibernate.hibernate_dual.Cliente;
+import es.fpdual.hibernate.hibernate_dual.Direccion;
 import es.fpdual.hibernate.hibernate_dual.EstadoCivil;
 import es.fpdual.hibernate.hibernate_dual.Persona;
 import es.fpdual.hibernate.hibernate_dual.Vehiculo;
@@ -29,8 +31,29 @@ public class PruebasPersona {
 		persona.setFechaAlta(new Date());
 		persona.setLogin(login);
 		persona.setPassword("jose");
+		
+		final Direccion direccion1 = new Direccion();
+		direccion1.setProvincia("Sevilla");
+		direccion1.setCiudad("Ecija");
+		direccion1.setCodPostal("41400");
+		direccion1.setDireccion("c/barcelona");
+		direccion1.setNumero(1);
+		direccion1.setPersonas(Arrays.asList(persona));
 
+		final Direccion direccion2 = new Direccion();
+		direccion2.setProvincia("Sevilla");
+		direccion2.setCiudad("Ecija");
+		direccion2.setCodPostal("41401");
+		direccion2.setDireccion("c/barcelona");
+		direccion2.setNumero(1);
+		direccion2.setPersonas(Arrays.asList(persona));
+		
+		persona.setDirecciones(null);
 		return RepositorioPersona.crearPersona(persona);
+	}
+	
+	private static void modificarDireccion(Integer idPersona) {
+		
 	}
 	
 	private static void modificarPersona(Integer idPersona) {
@@ -47,14 +70,6 @@ public class PruebasPersona {
 	}
 
 	private static void eliminarPersona(final Integer idPersona) {
-
-		final Persona persona = new Persona();
-		persona.setNombre("Josee");
-		persona.setApellidos("Maarquez Peerez");
-		persona.setEdad(20);
-		persona.setEstadoCivil(EstadoCivil.SOLTERO);
-		persona.setDni("31021471Z");
-		//persona.setIdPersona(1);
 
 		RepositorioPersona.eliminarPersona(idPersona);
 	}

@@ -21,5 +21,7 @@
 		<mapping class="es.fpdual.hibernate.hibernate_dual.Vehiculo" />
 		<mapping class="es.fpdual.hibernate.hibernate_dual.Usuario" />
 		<mapping class="es.fpdual.hibernate.hibernate_dual.Cliente" />
+		<mapping class="es.fpdual.hibernate.hibernate_dual.Direccion" />
+		
     </session-factory>
 </hibernate-configuration>
