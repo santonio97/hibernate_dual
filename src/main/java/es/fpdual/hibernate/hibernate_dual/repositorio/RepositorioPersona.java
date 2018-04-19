@@ -59,7 +59,7 @@ public class RepositorioPersona {
 
 			sesion.beginTransaction();
 
-			sesion.createQuery("delete Persona where usu_id = :idPersona").setParameter("idPersona", idPersona)
+			sesion.createQuery("delete Usuario Usu where usu_id = :idPersona").setParameter("idPersona", idPersona)
 					.executeUpdate();
 
 			sesion.getTransaction().commit();
