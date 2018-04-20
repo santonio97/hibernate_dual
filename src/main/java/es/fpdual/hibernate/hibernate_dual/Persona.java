@@ -1,8 +1,6 @@
 package es.fpdual.hibernate.hibernate_dual;
 
-import java.util.List;
-import java.util.Set;
-
+import java.util.*;
 import javax.persistence.*;
 
 @Entity
@@ -11,32 +9,35 @@ public class Persona extends Usuario {
 
 	@Column(name = "PER_NOM", nullable = false, length = 50)
 	private String nombre;
-	
+
 	@Column(name = "PER_APE", nullable = false, length = 250)
 	private String apellidos;
-	
+
 	@Column(name = "PER_DNI", nullable = false, length = 9, unique = true)
 	private String dni;
 
 	@Column(name = "PER_EDAD", nullable = false)
 	private Integer edad;
-	
+
 	@Column(name = "PER_ECV", nullable = false)
 	@Enumerated
 	private EstadoCivil estadoCivil;
 
 	@Column(name = "PER_DIR", nullable = false)
 	private List<Persona> direccion;
-	
+
 	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Direccion> direcciones;
-	
+
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "persona")
 	private Set<Telefonos> telefonos;
 
-	//constructor vacio
+	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE })
+	private DetallesPersona detallesPersona;
+
+	// constructor vacio
 	public Persona() {
-		
+
 	}
 
 	public String getNombre() {
@@ -86,5 +87,13 @@ public class Persona extends Usuario {
 	public void setDirecciones(List<Persona> direccion) {
 		this.direccion = direccion;
 	}
-	
+
+	public Set<Telefonos> getTelefonos() {
+		return telefonos;
+	}
+
+	public void setTelefonos(Set<Telefonos> telefonos) {
+		this.telefonos = telefonos;
+	}
+
 }

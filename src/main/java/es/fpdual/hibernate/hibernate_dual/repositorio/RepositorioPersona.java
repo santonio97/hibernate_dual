@@ -32,7 +32,7 @@ public class RepositorioPersona {
 			sesion.close();
 		}
 	}
-	
+
 	public static void modificarPersona(Persona persona) {
 		final Session sesion = HibernateUtil.getMiFactoria().getCurrentSession();
 
@@ -74,7 +74,8 @@ public class RepositorioPersona {
 		}
 	}
 
-	public static List<Persona> consultar(String nombre, String apellidos, String dni, EstadoCivil estadoCivil, String login) {
+	public static List<Persona> consultar(String nombre, String apellidos, String dni, EstadoCivil estadoCivil,
+			String login) {
 		final Session sesion = HibernateUtil.getMiFactoria().getCurrentSession();
 
 		try {
@@ -114,7 +115,7 @@ public class RepositorioPersona {
 			if (estadoCivil != null) {
 				consulta.setParameter("estadoCivil", estadoCivil.ordinal());
 			}
-			
+
 			if (login != null && !login.isEmpty()) {
 				consulta.setParameter("login", login);
 			}
@@ -139,11 +140,16 @@ public class RepositorioPersona {
 
 			sesion.beginTransaction();
 
-			return (Persona) sesion.createQuery("from Persona where usu_id = :idPersona")
+			Persona persona = (Persona) sesion.createQuery("from Persona where usu_id = :idPersona")
 					.setParameter("idPersona", idPersona).uniqueResult();
-//
+
+			persona.getTelefonos().stream();
+
+			return persona;
+
 		} catch (Exception e) {
-			System.out.println("se ha producido un error consultando el nombre completo de la persona" + e.getMessage());
+			System.out
+					.println("se ha producido un error consultando el nombre completo de la persona " + e.getMessage());
 			sesion.getTransaction().rollback();
 			throw new RuntimeException(e);
 

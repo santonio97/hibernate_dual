@@ -16,14 +16,15 @@ import es.fpdual.hibernate.hibernate_dual.repositorio.RepositorioVehiculo;
 public class PruebasPersona {
 
 	public static void main(String[] args) {
-//		final Integer idPersona = crearPersona("68541894Z", "jose");
+		final Integer idPersona = crearPersona("68541894Z", "jose");
 //		modificarDireccion(idPersona);
+//		consultarPersona(idPersona);
 		
 	}
 	
-	private static Integer crearDetalles() {
-		
-	}
+//	private static Integer crearDetalles() {
+//		
+//	}
 
 	private static Integer crearPersona(String dni, String login) {
 		final Persona persona = new Persona();
@@ -108,11 +109,14 @@ public class PruebasPersona {
 
 	private static void consultarPersona(final Integer idPersona) {
 		final Persona persona = RepositorioPersona.consultarNombreCompleto(idPersona);
-		System.out.println(persona.getNombre());
-		System.out.println(persona.getApellidos());
-		System.out.println(persona.getEstadoCivil());
-		System.out.println(persona.getEdad());
-		System.out.println(persona.getDni());
+//		System.out.println(persona.getNombre());
+//		System.out.println(persona.getApellidos());
+//		System.out.println(persona.getEstadoCivil());
+//		System.out.println(persona.getEdad());
+//		System.out.println(persona.getDni());
+//		System.out.println(persona.getTelefonos());
+		
+		
 	}
 
 	private static void consultar(String nombre, String apellidos, String dni, EstadoCivil estadoCivil, String login) {

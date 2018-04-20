@@ -43,7 +43,7 @@ public class Direccion implements Serializable {
 
 	@Column(name = "DIR_DIR", nullable = false)
 	private String direccion;
-	
+
 	// CONSTRUCTOR VACIO
 	public Direccion() {
 
